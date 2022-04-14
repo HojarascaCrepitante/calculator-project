@@ -1,3 +1,8 @@
+const display = document.querySelector('.display')
+
+const numberButons = document.querySelectorAll('.keys')
+numberButons.forEach(el => el.addEventListener('click', showDisplay))
+
 function add(a,b) {
     let result = a+b;	
     return result
@@ -14,3 +19,7 @@ function add(a,b) {
       else return 'error'
       
   }operate()
+
+  function showDisplay(e){
+      display.textContent = display.textContent + e.target.textContent
+  }

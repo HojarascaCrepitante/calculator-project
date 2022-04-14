@@ -29,3 +29,19 @@ body{
     font-size: 20px;
     text-align: center;
 }
+.keys-operator{
+    font-size: 50px;
+    margin: 10px;
+    padding: 10px;
+    flex: 1;
+    border-radius: 15%;
+    background-color: rgb(207, 204, 204);
+}
+.keys-equal{
+    font-size: 50px;
+    margin: 10px;
+    padding: 10px;
+    flex: 1;
+    border-radius: 15%;
+    background-color: rgb(207, 204, 204);
+}
