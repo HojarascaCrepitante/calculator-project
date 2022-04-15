@@ -45,3 +45,11 @@ body{
     border-radius: 15%;
     background-color: rgb(207, 204, 204);
 }
+.keys-clear{
+    font-size: 50px;
+    margin: 10px;
+    padding: 10px;
+    flex: 1;
+    border-radius: 15%;
+    background-color: rgb(207, 204, 204);
+}
