@@ -6,16 +6,20 @@ const clearButton = document.querySelector('.keys-clear');
     clearButton.addEventListener('click',clearEverything);
 const operators = document.querySelectorAll('.keys-operator');
     operators.forEach(el => el.addEventListener('click', addOperator));
-    
 const equalButton = document.querySelector('.keys-equal');
     equalButton.addEventListener('click',operate)
 
 
 
   function add(a,b) {
-     result = (a)+(b);	
-    return result
-  };
+    return (a)+(b);	
+  }
+  function subtract(a,b) {
+	return (a) - (b);
+  }
+  function multiply(a,b) {
+    return (a) * (b);
+  }
   
   let previousOperation = '';
   let leftOperand = [];
@@ -25,12 +29,21 @@ const equalButton = document.querySelector('.keys-equal');
 
   function operate(a,b,c){
         if(b == '+'){
-           result = add(Number(a),Number(c))
-          display.textContent = result;
+          result = add(Number(a),Number(c));
+          display.textContent = result
           return result
-  }operate(leftOperand.join(''),operationToDo,rightOperand.join(''))
-      
-      
+        }
+        if(b == 'X'){
+            result = multiply(Number(a),Number(c));
+            display.textContent = result
+            return result
+        }
+        if(b == '-'){
+            result = subtract(Number(a),Number(c));
+            display.textContent = result
+            return result
+        }
+        operate(leftOperand.join(''),operationToDo,rightOperand.join(''))
   }
 
   function addLeftOperand(e){
@@ -62,10 +75,17 @@ const equalButton = document.querySelector('.keys-equal');
 function updateLeftOperand(e){
     leftOperand = reduce(leftOperand.join(''),rightOperand.join(''));
     rightOperand = [];
+    operationToDo = e.target.textContent;
     display.textContent = rightOperand.join('');
 }
 function reduce(left,right){
     if (previousOperation == '+'){
        return leftOperand = [(Number(left) + Number(right))]
+    }
+    if(previousOperation == '-'){
+        return leftOperand = [(Number(left) - Number(right))]
+    }
+    if(previousOperation == 'X'){
+        return leftOperand = [(Number(left) * Number(right))]
     }
 }
