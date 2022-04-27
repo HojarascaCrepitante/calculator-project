@@ -83,7 +83,7 @@ const equalButton = document.querySelector('.keys-equal');
   }
 
   function addOperator(e){
-      if(operationToDo == '+' || operationToDo == '-' || operationToDo == 'X' || operationToDo == '/'){
+      if(operationToDo == '+' || operationToDo == '-' || operationToDo == '*' || operationToDo == '/'){
       operate(leftOperand, operationToDo, myOperand)
       }
     leftOperand = myOperand
