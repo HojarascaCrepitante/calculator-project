@@ -39,28 +39,33 @@ const equalButton = document.querySelector('.keys-equal');
           result = add(Number(a),Number(c));
           display.textContent = result;
           myOperand = result;
+          operationToDo = ''
           return result
         }
         if(b == '*'){
             result = multiply(Number(a),Number(c));
             display.textContent = result;
             myOperand = result;
+            operationToDo = ''
             return result
         }
         if(b == '-'){
             result = subtract(Number(a),Number(c));
             display.textContent = result;
             myOperand = result;
+            operationToDo = ''
             return result
         }
         if(b == '/'){
-          result = divide(Number(a),Number(c))
+          result = divide(Number(a),Number(c));
           display.textContent = result;
           myOperand = result;
+          operationToDo = ''
           return result
         }
-  
+        
         operate(leftOperand, operationToDo, myOperand)
+        
   }
 
 
@@ -71,14 +76,14 @@ const equalButton = document.querySelector('.keys-equal');
     
   function clearEverything(){
       display.textContent = '';
-      result = ''
-      leftOperand = ''
-      myOperand = ''
+      result = '';
+      leftOperand = '';
+      myOperand = '';
       operationToDo = '';
   }
 
   function addOperator(e){
-      if(operationToDo == '+' || operationToDo == '-' || operationToDo == 'X'){
+      if(operationToDo == '+' || operationToDo == '-' || operationToDo == 'X' || operationToDo == '/'){
       operate(leftOperand, operationToDo, myOperand)
       }
     leftOperand = myOperand
