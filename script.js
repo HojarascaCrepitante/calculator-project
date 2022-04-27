@@ -1,7 +1,7 @@
 const display = document.querySelector('.display');
   
 const numberButons = document.querySelectorAll('.keys');
-    numberButons.forEach(el => el.addEventListener('click', addLeftOperand));
+    numberButons.forEach(el => el.addEventListener('click', addOperands));
 const clearButton = document.querySelector('.keys-clear');
     clearButton.addEventListener('click',clearEverything);
 const operators = document.querySelectorAll('.keys-operator');
@@ -20,72 +20,70 @@ const equalButton = document.querySelector('.keys-equal');
   function multiply(a,b) {
     return (a) * (b);
   }
+  function divide(a,b){
+    if(a == 0 || b == 0){
+      return "What do you think you're doing?"
+    }
+    else{
+    return Math.floor(a / b)}
+  }
   
-  let previousOperation = '';
-  let leftOperand = [];
+  
   let operationToDo = '';
-  let rightOperand = [];
-  
+  let myOperand = '';
+  let leftOperand = '';
+  let result = '';
 
   function operate(a,b,c){
         if(b == '+'){
           result = add(Number(a),Number(c));
-          display.textContent = result
+          display.textContent = result;
+          myOperand = result;
           return result
         }
-        if(b == 'X'){
+        if(b == '*'){
             result = multiply(Number(a),Number(c));
-            display.textContent = result
+            display.textContent = result;
+            myOperand = result;
             return result
         }
         if(b == '-'){
             result = subtract(Number(a),Number(c));
-            display.textContent = result
+            display.textContent = result;
+            myOperand = result;
             return result
         }
-        operate(leftOperand.join(''),operationToDo,rightOperand.join(''))
+        if(b == '/'){
+          result = divide(Number(a),Number(c))
+          display.textContent = result;
+          myOperand = result;
+          return result
+        }
+  
+        operate(leftOperand, operationToDo, myOperand)
   }
 
-  function addLeftOperand(e){
-     leftOperand.push(Number(e.target.textContent))
-     display.textContent = leftOperand.join('')
-     
-  }
-  function addRightOperand(e){
-      rightOperand.push(Number(e.target.textContent))
-      display.textContent = rightOperand.join('');
-  }
-  
-  
+
+  function addOperands(e){
+     myOperand += e.target.textContent
+     display.textContent = myOperand
+    }
+    
   function clearEverything(){
       display.textContent = '';
-      leftOperand = [];
+      result = ''
+      leftOperand = ''
+      myOperand = ''
       operationToDo = '';
-      rightOperand = [];
-      previousOperation = '';
-}
+  }
+
   function addOperator(e){
-       numberButons.forEach(el => el.removeEventListener('click', addLeftOperand))
-       numberButons.forEach(el => el.addEventListener('click', addRightOperand))
-       operators.forEach(el => el.addEventListener('click', updateLeftOperand))
-      operationToDo = e.target.textContent;
-      previousOperation = e.target.textContent;
-      display.textContent = leftOperand.join('') + operationToDo
-}
-function updateLeftOperand(e){
-    leftOperand = reduce(leftOperand.join(''),rightOperand.join(''));
-    rightOperand = [];
-    operationToDo = e.target.textContent;
-    display.textContent = rightOperand.join('');
-}
-function reduce(left,right){
-    if (previousOperation == '+'){
-       return leftOperand = [(Number(left) + Number(right))]
+      if(operationToDo == '+' || operationToDo == '-' || operationToDo == 'X'){
+      operate(leftOperand, operationToDo, myOperand)
+      }
+    leftOperand = myOperand
+    myOperand = '';
+    operationToDo = e.target.textContent
+    display.textContent = operationToDo
     }
-    if(previousOperation == '-'){
-        return leftOperand = [(Number(left) - Number(right))]
-    }
-    if(previousOperation == 'X'){
-        return leftOperand = [(Number(left) * Number(right))]
-    }
-}
+
