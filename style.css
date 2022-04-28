@@ -17,7 +17,8 @@ body{
     padding: 10px;
     flex: 1;
     border-radius: 15%;
-    background-color: rgb(207, 204, 204);
+    background-color: rgb(255, 248, 248);
+    color: black;
 }
 .display{
     height: 40px;
@@ -36,7 +37,8 @@ body{
     padding: 10px;
     flex: 1;
     border-radius: 15%;
-    background-color: rgb(207, 204, 204);
+    background-color: rgb(136, 103, 60);
+    color: aqua;
 }
 .keys-equal{
     font-size: 50px;
@@ -44,7 +46,8 @@ body{
     padding: 10px;
     flex: 1;
     border-radius: 15%;
-    background-color: rgb(207, 204, 204);
+    background-color: rgb(218, 218, 179);
+    color: rgb(53, 65, 65);
 }
 .keys-clear{
     font-size: 50px;
@@ -52,7 +55,8 @@ body{
     padding: 10px;
     flex: 1;
     border-radius: 15%;
-    background-color: rgb(207, 204, 204);
+    background-color: rgb(8, 8, 8);
+    color: rgb(150, 75, 75);
 }
 header{
     font-size: 60px;
